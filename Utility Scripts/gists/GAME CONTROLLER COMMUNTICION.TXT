@@ -1,0 +1,22 @@
+﻿Controller- Entity Communication Design
+
+
+	1. Placed Entities  (e.g. race checkpoints) use a register.js script to register themselves into the database--with registration retry logic built in.
+	   (Registration is into global state with key.)
+
+	2. Controller periodically queries global state for the array of keys of entites.
+
+	3. Controller direct messages a  Report! command to each entity on the list.(so errors can be returned)
+
+	4. Entities that recieve the report command respond.
+
+	5. If error comes back, the controller deletes the missing entity key from the database.  This keeps the data base in a CLEAN state.
+
+	6. Controller's list is always up to date due to the periodic database read -- report! -- purge cycle.
+
+	7. The game controller makes use of its up-to-date list of game entities at runtime for game play messaging.
+	   Other Game elements may make use of the database for communication as well (e.g. to message the game controller)
+
+ABOVE IDEAS BASED IN PART UPON THE REGISTRATION AND CONTROLLER SCRIPT IN THE EXAMPLE SCIRPTS:
+
+http://wiki.cloudparty.com/wiki/Script_Examples/Scene_Scripts
