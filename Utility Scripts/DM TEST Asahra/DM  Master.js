@@ -61,13 +61,21 @@ function purgeAssetFromDB(assetName){
 
    delete gAssetsObj[assetName];
 
+    var assetsObjCopy = clone(gAssetsObj);
+
+
     setGlobalState({
     state_key: 'DM Key',
-    data: gAssetsObj
+    data: {asset_a_nick:'jello' }
+  });
+
+    setGlobalState({
+    state_key: 'DM Key',
+    data: assetsObjCopy
   });
 
     error('Entity ( ' + assetName + ' ) not found. Purged old ID. Putting system into Standby mode.');
-    error('After purging, assets now contains: ' + stringify(gAssetsObj, { newline: false, indent: false }));
+    error('After purging, assets now contains: ' + stringify(assetsObjCopy, { newline: false, indent: false }));
 }
 
 function clickStart() {

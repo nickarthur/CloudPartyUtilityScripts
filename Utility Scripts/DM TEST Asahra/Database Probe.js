@@ -1,15 +1,11 @@
-﻿
-handlerCreate()
-{
-
-}
+﻿//database probe
 
 function clickStart(clickEventData) {
   getGlobalState({
     state_key: 'DM Key',
     keys: ['asset_a_nick', 'asset_b_nick', 'asset_c_nick'],
     callback: 'printAssets',
-    data: { greeting:"yo! man"}
+    callback_data: { greeting:"yo! man"}
   });
 }
 
@@ -23,22 +19,4 @@ handlerCreate({
   channel: 'direct',
   message: 'clickStart'
 });
-
-function test(joe) {
-
-  var a;
-
-  var joke={v1:{av:'b'},v2:{cv:'d'},
-  v3:{tess:"la"}};
-
-  var joke2;
-
-  joke2 = {v1:{av:'b'},v2:{cv:'d'},
-    v3:{tess:"la"}};
-  var b = {
-    test: 'jon',
-    sue: 'ellen',
-    taby: 'cat'
-  };
-}
 

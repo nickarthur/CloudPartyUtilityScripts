@@ -57,6 +57,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="UNIT TESTS\lib\jasmine-1.3.0\jasmine-html.js" />
+    <Content Include="UNIT TESTS\lib\jasmine-1.3.0\jasmine.css" />
+    <Content Include="UNIT TESTS\lib\jasmine-1.3.0\jasmine.js" />
+    <Content Include="UNIT TESTS\SpecRunner.html" />
+    <Content Include="UNIT TESTS\spec\PlayerSpec.js" />
+    <Content Include="UNIT TESTS\spec\SpecHelper.js" />
+    <Content Include="UNIT TESTS\src\Player.js" />
+    <Content Include="UNIT TESTS\src\Song.js" />
     <Content Include="Utility Scripts\Direct Message Test\MessageReviever.js" />
     <Content Include="Utility Scripts\Direct Message Test\MessageSender.js" />
     <Content Include="Utility Scripts\DM TEST Asahra\Database Probe.js" />
@@ -90,6 +98,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="UNIT TESTS\lib\jasmine-1.3.0\MIT.LICENSE" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
