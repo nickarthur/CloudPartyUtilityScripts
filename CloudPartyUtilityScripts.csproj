@@ -59,11 +59,11 @@
   <ItemGroup>
     <Content Include="Utility Scripts\Direct Message Test\MessageReviever.js" />
     <Content Include="Utility Scripts\Direct Message Test\MessageSender.js" />
+    <Content Include="Utility Scripts\DM TEST Asahra\Database Probe.js" />
     <Content Include="Utility Scripts\DM TEST Asahra\DM  Master.js" />
     <Content Include="Utility Scripts\DM TEST Asahra\DM Asset 1.js" />
     <Content Include="Utility Scripts\DM TEST Asahra\DM Asset 2.js" />
     <Content Include="Utility Scripts\DM TEST Asahra\DM Asset 3.js" />
-    <Content Include="Utility Scripts\DM TEST Asahra\Global State Check.js" />
     <Content Include="Utility Scripts\Game Controller Communication Test\Com Controller.js" />
     <Content Include="Utility Scripts\Game Controller Communication Test\Communication Ball 1.js" />
     <Content Include="Utility Scripts\Game Controller Communication Test\Communication Ball 2.js" />
