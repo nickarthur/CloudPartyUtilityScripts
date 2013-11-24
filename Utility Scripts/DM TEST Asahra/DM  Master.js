@@ -1,120 +1,177 @@
-﻿var gAssetsObj = {};
+﻿var gameObjects = {};
+var trackedAssetCount = getParam('Tracked Asset Count');
 
-function updatedData(globalStateData) {
-  error('Getting asset ID\'s from database...');
+var running = false;
+var retry;
 
-  getGlobalState({
-    state_key: 'DM Key',
-    keys: ['asset_a_nick','asset_b_nick','asset_c_nick'],
-    callback: 'getAssets'
-  });
-}
 
-function getAssets(globalStateData) {
-  error('In getAssets: globalStateData = ' + stringify(globalStateData, { newline: false, indent: false }));
-  gAssetsObj = globalStateData;
+function getGameObjects(globalStateData) {
+  //error('In getAssets: globalStateData = ' + stringify(globalStateData, { newline: false, indent: false }));
+  //error('In getAssets: TOTAL TRACKED ASSETS SETTING = ' + trackedAssetCount);
+  error('GetGameObjects: TOTAL ASSETS FOUND IS: ' +keys(gameObjects).length);
+  gameObjects = globalStateData.gameObjects;
 
   if (globalStateData.polled) {
-    if (keys(gAssetsObj).length < 3) {
-      error('getAssets: All assets don\'t exist. Continuing to poll...');
+    if (keys(gameObjects).length < trackedAssetCount) {
+      error('getGameObjects: All assets don\'t exist. Continuing to poll...');
       pollEntity();
     } else {
       timerDestroy('pollEntity');
-      error('getAssets: All entities found. Everything seems good.');
+      error('getGameObjects: All entities found. Everything seems good.');
     }
   }
 }
 
 function pollEntity() {
-  error('assets{} length = ' + keys(gAssetsObj).length);
-  error('Polling Global State...');
+  error('assets{} length = ' + keys(gameObjects).length);
+  //error('Polling Global State...');
 
   getGlobalState({
     state_key: 'DM Key',
-    keys: ['asset_a_nick','asset_b_nick','asset_c_nick'],
-    callback: 'getAssets',
+    keys: ['gameObjects'],
+    callback: 'getGameObjects',
     callback_data: { polled: true }
   });
 }
 
 function checkTaskResponse(messageData) {
-  error('messageData = ' + stringify(messageData, { newline: false, indent: false }));
+  error('checkTaskResponse: messageData = ' + stringify(messageData, { newline: false, indent: false }));
 
   if (messageData.err !== undefined) {
 
+    error('checkTaskResponse: We have an error messageData = ' + stringify(messageData, { newline: false, indent: false }));
     purgeAssetFromDB(messageData.name);
 
 
-    error('Starting timer for polled broadcast...');
+    error('checkTaskResponse: Starting timer for polled broadcast...');
     timerCreate({ name: 'pollEntity', period: 4 });
 
   } else {
     timerDestroy('pollEntity');
-    error('Entity was found. Everything seems good.');
+    error('checkTaskResponse: Entity was found. Everything seems good.');
   }
 }
 
 function purgeAssetFromDB(assetName){
-    error('In purgeAssetsFromDB: gAssetsObj = ' +  stringify(gAssetsObj, { newline: false, indent: false }));
+  error('In purgeAssetsFromDB: gameObjects = ' +  stringify(gameObjects, { newline: false, indent: false }));
 
   error("In purgeAssetsFromDB: the property name to be deleted is: " + assetName);
 
-   delete gAssetsObj[assetName];
+  delete gameObjects[assetName];
 
-    var assetsObjCopy = clone(gAssetsObj);
+  var gameObjectsCopy = clone(gameObjects);
 
-
-    setGlobalState({
+  setGlobalState({
     state_key: 'DM Key',
-    data: {asset_a_nick:'jello' }
+    data: {gameObjects:gameObjectsCopy}
   });
 
     setGlobalState({
     state_key: 'DM Key',
-    data: assetsObjCopy
+    data: {gameObjects:gameObjectsCopy}
   });
 
     error('Entity ( ' + assetName + ' ) not found. Purged old ID. Putting system into Standby mode.');
-    error('After purging, assets now contains: ' + stringify(assetsObjCopy, { newline: false, indent: false }));
+    error('After purging, assets now contains: ' + stringify(gameObjectsCopy, { newline: false, indent: false }));
 }
 
-function clickStart() {
-  error('Direct Messaging asset_a_nick via ID [' + gAssetsObj.asset_a_nick + '] to do a task...');
-  directMessage({
-    ent: gAssetsObj.asset_a_nick,
-    channel: 'dm_channel',
-    message: 'task',
-    callback: 'checkTaskResponse',
-    callback_data: { name: 'asset_a_nick' }
-  });
+ // Registration..
 
-  error('Direct Messaging asset_b_nick via ID [' + gAssetsObj.asset_b_nick + '] to do a task...');
-  directMessage({
-    ent: gAssetsObj.asset_b_nick,
-    channel: 'dm_channel',
-    message: 'task',
-    callback: 'checkTaskResponse',
-    callback_data: { name: 'asset_b_nick' }
-  });
+ function register(data) {
 
-  error('Direct Messaging asset_c_nick via ID [' + gAssetsObj.asset_c_nick + '] to do a task...');
-  directMessage({
-    ent: gAssetsObj.asset_c_nick,
-    channel: 'dm_channel',
-    message: 'task',
-    callback: 'checkTaskResponse',
-    callback_data: { name: 'asset_c_nick' }
+   if ( retry !== true || data.err !== undefined ) {
+     getGlobalState({
+       state_key: 'DM Key',
+       keys: ['gameObjects'],
+       callback: 'registerYourself'
+     });
+   } else {
+       error('Updated with ID: ' + getSelfEnt());//done
+   }
+ }
+
+ function registerYourself(data) {
+   //error('In RegisterYourself:  global state has: ' + stringify(data,{ newline: false, indent: false }));
+   gameObjects = data.gameObjects;
+
+   var base_gameObjects = clone(gameObjects);
+
+   if (gameObjects === undefined) {
+     gameObjects = { };
+   }
+
+   var my_name = getParam('Game Object Name');
+
+   gameObjects[my_name] = getSelfEnt();
+
+   retry = true;
+   //error('In RegisterYourself:  SETTING global state TO: ' + stringify(gameObjects,{ newline: false, indent: false }));
+
+   setGlobalState({
+     state_key: 'DM Key',
+     data: { gameObjects: gameObjects },
+     check: { gameObjects: base_gameObjects},
+     callback: 'register'
+   });
+ }
+
+function pingAssets() {
+  //error('PING: Getting asset ID\'s from database...');
+
+  getGlobalState({
+    state_key: 'DM Key',
+    keys: ['gameObjects'],
+    callback: 'getGameObjects'
   });
 }
 
-handlerCreate({
-  name: 'clickStart',
-  channel: 'direct',
-  message: 'clickStart'
-});
+function triggerGameTask()
+{
+  if (gameObjects !== "undefined") {
+    //error('IN TRIGGER GAME TASK: ' + stringify(gameObjects, { newline: false, indent: false }));
 
-setGlobalState({
-  state_key: 'DM Key',
-  data: { master: getSelfEnt() },
-  callback: 'updatedData'
-});
+    var assetNames = keys(gameObjects);
+
+    //error('IN TRIGGER GAME TASK the game object keys are: ' + stringify(assetNames, { newline: false, indent: false }));
+    error('TOTAL ASSETS FOUND = ' + assetNames.length);
+
+    if ( assetNames !== "undefined" && assetNames.length !== 0 ) {
+      for ( var i = 0 ;i< assetNames.length;i++) {
+        //error('Processing Game Asset: ' + assetNames[i] );
+        //error('Direct Messaging '+ assetNames[i] + ' via ID [' +  gameObjects[assetNames[i]] + '] to do a task...');
+
+        directMessage({
+          ent: gameObjects[assetNames[i]],
+          channel: 'dm_channel',
+          message: 'task',
+          callback: 'checkTaskResponse',
+          callback_data: { name: assetNames[i] }
+        });
+      }
+    }
+  }
+
+}
+
+  function clickStart() {
+    error('TRIGGERING GAME TASK!');
+      triggerGameTask();
+  }
+
+  function init() {
+
+  retry = false;
+
+  register({});
+
+  handlerCreate({
+    name: 'clickStart',
+    channel: 'direct',
+    message: 'clickStart'
+  });
+
+  error('STARTED!');
+ // timerCreate({ name: 'pingAssets', period: 10 });
+}
+
+init();
