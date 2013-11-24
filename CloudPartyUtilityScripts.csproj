@@ -65,6 +65,8 @@
     <Content Include="UNIT TESTS\spec\SpecHelper.js" />
     <Content Include="UNIT TESTS\src\Player.js" />
     <Content Include="UNIT TESTS\src\Song.js" />
+    <Content Include="Utility Scripts\Animation Scripts\Anim Play Delayed.js" />
+    <Content Include="Utility Scripts\Canon Scripts\Cannon Script.js" />
     <Content Include="Utility Scripts\Direct Message Test\MessageReviever.js" />
     <Content Include="Utility Scripts\Direct Message Test\MessageSender.js" />
     <Content Include="Utility Scripts\DM TEST Asahra\Database Probe.js" />
@@ -72,6 +74,7 @@
     <Content Include="Utility Scripts\DM TEST Asahra\DM Asset 1.js" />
     <Content Include="Utility Scripts\DM TEST Asahra\DM Asset 2.js" />
     <Content Include="Utility Scripts\DM TEST Asahra\DM Asset 3.js" />
+    <Content Include="Utility Scripts\Follower Scripts\Follower Script.js" />
     <Content Include="Utility Scripts\Game Controller Communication Test\Com Controller.js" />
     <Content Include="Utility Scripts\Game Controller Communication Test\Communication Ball 1.js" />
     <Content Include="Utility Scripts\Game Controller Communication Test\Communication Ball 2.js" />
@@ -80,15 +83,18 @@
     <Content Include="Utility Scripts\HTML Controller Test Scripts\HTML Auto Close and By Button.js" />
     <Content Include="Utility Scripts\HTML Controller Test Scripts\Html Refresh.js" />
     <Content Include="Utility Scripts\Javascript Examples\Delete Object Property.js" />
+    <Content Include="Utility Scripts\Mover Scripts\Balloon Script.js" />
     <Content Include="Utility Scripts\Parent and Spawn Messaging\Messenger Parent.js" />
     <Content Include="Utility Scripts\Parent and Spawn Messaging\Messenger Spawn.js" />
     <Content Include="Utility Scripts\Projectiles\Homing Projectile.js" />
+    <Content Include="Utility Scripts\Projectiles\Rocket Script.js" />
     <Content Include="Utility Scripts\Scene Scripts\Controller.js" />
     <Content Include="Utility Scripts\Scene Scripts\Director.js" />
     <Content Include="Utility Scripts\Scene Scripts\Fade.js" />
     <Content Include="Utility Scripts\Scene Scripts\Mover.js" />
     <Content Include="Utility Scripts\Scene Scripts\Register.js" />
     <Content Include="Utility Scripts\Scene Scripts\Sound.js" />
+    <Content Include="Utility Scripts\Sit Scripts\Sit Script.js" />
     <Content Include="Utility Scripts\State Data Processing\Global State Examples\Visitor Counter.js" />
     <Content Include="Utility Scripts\TEXT SCRATCH PAD.txt" />
     <Content Include="Utility Scripts\WEBSITES for CP DEVELOPMENT.html" />
@@ -106,6 +112,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
