@@ -97,6 +97,9 @@
     <Content Include="Utility Scripts\Sit Scripts\Sit Script.js" />
     <Content Include="Utility Scripts\State Data Processing\Global State Examples\Visitor Counter.js" />
     <Content Include="Utility Scripts\TEXT SCRATCH PAD.txt" />
+    <Content Include="Utility Scripts\UniqueID Scrips\GUID  Javascript\Guid.html" />
+    <Content Include="Utility Scripts\UniqueID Scrips\GUID  Javascript\Guid.js" />
+    <Content Include="Utility Scripts\UniqueID Scrips\Prefab Unique Name\UniquePrefabName.js" />
     <Content Include="Utility Scripts\WEBSITES for CP DEVELOPMENT.html" />
     <Content Include="Web.config" />
   </ItemGroup>
