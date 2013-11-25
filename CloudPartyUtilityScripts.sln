@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudPartyUtilityScripts", "CloudPartyUtilityScripts.csproj", "{802E80CF-20B4-44E1-BE12-32C951ACF5B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudParty Unit Tests", "..\CloudParty Unit Tests\CloudParty Unit Tests.csproj", "{21938F1D-13E2-4666-ADBB-9A130C04F8CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTweenPort", "..\iTweenPort\iTweenPort.csproj", "{398344FB-EE12-40E7-9AAC-A2172AA0714D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{802E80CF-20B4-44E1-BE12-32C951ACF5B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{802E80CF-20B4-44E1-BE12-32C951ACF5B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{802E80CF-20B4-44E1-BE12-32C951ACF5B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{802E80CF-20B4-44E1-BE12-32C951ACF5B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21938F1D-13E2-4666-ADBB-9A130C04F8CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21938F1D-13E2-4666-ADBB-9A130C04F8CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21938F1D-13E2-4666-ADBB-9A130C04F8CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21938F1D-13E2-4666-ADBB-9A130C04F8CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{398344FB-EE12-40E7-9AAC-A2172AA0714D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{398344FB-EE12-40E7-9AAC-A2172AA0714D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{398344FB-EE12-40E7-9AAC-A2172AA0714D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{398344FB-EE12-40E7-9AAC-A2172AA0714D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

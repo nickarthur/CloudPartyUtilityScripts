@@ -11,3 +11,11 @@
 /Web.config
 /Web.Debug.config
 /Web.Release.config
+/bin/CloudPartyUtilityScripts.dll
+/bin/CloudPartyUtilityScripts.pdb
+/CloudPartyUtilityScripts.sln.DotSettings.user
+/CloudPartyUtilityScripts.v11.suo
+/obj/Debug/CloudPartyUtilityScripts.csproj.FileListAbsolute.txt
+/obj/Debug/CloudPartyUtilityScripts.csprojResolveAssemblyReference.cache
+/obj/Debug/CloudPartyUtilityScripts.dll
+*.pdb
