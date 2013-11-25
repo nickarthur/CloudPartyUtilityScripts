@@ -1,7 +1,7 @@
 ﻿
  // Register...
 
-var g_myName = (getParam('Game Object Name') === '') ?     'prefab' + randomInt(1,60000) : getParam('Game Object Name');
+var g_myName = getParam('Game Object Name');
 
 //http://wiki.cloudparty.com/wiki/Script_Examples/Scene_Scripts
  // Where are we?
@@ -26,8 +26,7 @@ function keepAlive() {
        keys: ['gameObjects'],
        callback: 'reRegister'
      });
-}
-
+}
 function reRegister(globalStateData) {
 
   var keysArray = keys(globalStateData.gameObjects);
