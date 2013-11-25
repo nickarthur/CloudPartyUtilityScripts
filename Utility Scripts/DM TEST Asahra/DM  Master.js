@@ -35,15 +35,15 @@ function pollEntity() {
 }
 
 function checkTaskResponse(messageData) {
-  error('checkTaskResponse: messageData = ' + stringify(messageData, { newline: false, indent: false }));
+  //error('checkTaskResponse: messageData = ' + stringify(messageData, { newline: false, indent: false }));
 
   if (messageData.err !== undefined) {
 
-    error('checkTaskResponse: We have an error messageData = ' + stringify(messageData, { newline: false, indent: false }));
+    //error('checkTaskResponse: We have an error messageData = ' + stringify(messageData, { newline: false, indent: false }));
     purgeAssetFromDB(messageData.name);
 
 
-    error('checkTaskResponse: Starting timer for polled broadcast...');
+    //error('checkTaskResponse: Starting timer for polled broadcast...');
     timerCreate({ name: 'pollEntity', period: 4 });
 
   } else {
@@ -53,9 +53,9 @@ function checkTaskResponse(messageData) {
 }
 
 function purgeAssetFromDB(assetName){
-  error('In purgeAssetsFromDB: gameObjects = ' +  stringify(gameObjects, { newline: false, indent: false }));
+  //error('In purgeAssetsFromDB: gameObjects = ' +  stringify(gameObjects, { newline: false, indent: false }));
 
-  error("In purgeAssetsFromDB: the property name to be deleted is: " + assetName);
+  //error("In purgeAssetsFromDB: the property name to be deleted is: " + assetName);
 
   delete gameObjects[assetName];
 
@@ -72,7 +72,7 @@ function purgeAssetFromDB(assetName){
   });
 
     error('Entity ( ' + assetName + ' ) not found. Purged old ID. Putting system into Standby mode.');
-    error('After purging, assets now contains: ' + stringify(gameObjectsCopy, { newline: false, indent: false }));
+    //error('After purging, assets now contains: ' + stringify(gameObjectsCopy, { newline: false, indent: false }));
 }
 
  // Registration..
@@ -86,7 +86,7 @@ function purgeAssetFromDB(assetName){
        callback: 'registerYourself'
      });
    } else {
-       error('Updated with ID: ' + getSelfEnt());//done
+       //error('Updated with ID: ' + getSelfEnt());//done
    }
  }
 
@@ -133,7 +133,7 @@ function triggerGameTask()
     var assetNames = keys(gameObjects);
 
     //error('IN TRIGGER GAME TASK the game object keys are: ' + stringify(assetNames, { newline: false, indent: false }));
-    error('TOTAL ASSETS FOUND = ' + assetNames.length);
+    //error('TOTAL ASSETS FOUND = ' + assetNames.length);
 
     if ( assetNames !== "undefined" && assetNames.length !== 0 ) {
       for ( var i = 0 ;i< assetNames.length;i++) {
