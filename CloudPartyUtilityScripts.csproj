@@ -102,6 +102,8 @@
     <Content Include="Utility Scripts\Scene Scripts\Mover.js" />
     <Content Include="Utility Scripts\Scene Scripts\Register.js" />
     <Content Include="Utility Scripts\Scene Scripts\Sound.js" />
+    <Content Include="Utility Scripts\Self Direct Message\rotateOnMessage.js" />
+    <Content Include="Utility Scripts\Self Direct Message\Self Direct Message.js" />
     <Content Include="Utility Scripts\Sit Scripts\Sit Script.js" />
     <Content Include="Utility Scripts\State Data Processing\Global State Examples\Visitor Counter.js" />
     <Content Include="Utility Scripts\TEXT SCRATCH PAD.txt" />
